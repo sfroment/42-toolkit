@@ -89,3 +89,18 @@ void		f_list_delete_if(t_list *v_this,
 			cur = cur->v_next;
 	}
 }
+
+bool		f_list_copy(t_list *v_this, t_list *from_list)
+{
+	t_list_cell	*cur;
+
+	D_LIST(clear)(v_this);
+	cur = from_list->v_begin;
+	while (cur != NULL)
+	{
+		if (D_LIST(push_back)(v_this, cur->v_data) == false)
+			return (false);
+		cur = cur->v_next;
+	}
+	return (true);
+}
